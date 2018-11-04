@@ -19,6 +19,13 @@
 <div class="jumbotron text-center">
   <p id="demo"></p>
 </div>
+<p id="status">OpenCV.js is loading...</p>
+<div class="jumbotron text-center">
+    <canvas id="canvasOutput" ></canvas>
+</div>
+
+</script>
+<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
 <div id="result" class="jumbotron text-center"></div>
 
 
@@ -43,7 +50,7 @@
     }, 1);
 </script>
 <video id ="abs" autoplay/>
-<canvas id="canvasOutput" ></canvas>
+
 <script type="text/javascript">
 let video = document.getElementById('abs');
 let cap = new cv.VideoCapture(video);
