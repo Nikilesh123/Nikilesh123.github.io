@@ -1,28 +1,26 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Nikilesh</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-</head>
-<body onload="clickCounter()">
-<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
-<div class="jumbotron text-center">
-  <h1>Nikilesh</h1>
-
-</div>
-<div class="jumbotron text-center">
-  <p id="demo"></p>
-</div>
-<div id="result" class="jumbotron text-center"></div>
-
-
-<script>
+	<head>
+		<title>Nikilesh</title>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					</head>
+					<body onload="clickCounter()">
+						<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+						<div class="jumbotron text-center">
+							<h1>Nikilesh</h1>
+						</div>
+						<div class="jumbotron text-center">
+							<p id="demo"></p>
+						</div>
+						<div id="result" class="jumbotron text-center"></div>
+						<script>
     function clickCounter() {
         if (typeof (Storage) !== "undefined") {
             if (localStorage.clickcount) {
@@ -36,15 +34,14 @@
         }
     }
 </script>
-
-<script>
+						<script>
     var x = setInterval(function () {
     document.getElementById("demo").innerHTML = Date();
     }, 1);
 </script>
-<video id ="abs" autoplay/>
-<canvas id="canvasOutput" ></canvas>
-<script>
+						<video id ="abs" autoplay/>
+						<canvas id="canvasOutput" ></canvas>
+						<script type="text/javascript">
 let video = document.getElementById('abs');
 let cap = new cv.VideoCapture(video);
 
@@ -120,17 +117,7 @@ function processVideo() {
 // schedule the first one.
 setTimeout(processVideo, 0);
 </script>
-
-
-
-
-
-
-
-
-
-
-<script>
+						<script>
   var recordedChunks = [];
 
   function gotMedia(stream) {
@@ -158,7 +145,7 @@ setTimeout(processVideo, 0);
       .then(gotMedia)
       .catch(e => { console.error('getUserMedia() failed: ' + e); });
 </script>
-</body>
-</html>
+					</body>
+				</html>
 
 
