@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
-<body>
+<body onload="clickCounter()">
 
 <div class="jumbotron text-center">
   <h1>Nikilesh</h1>
@@ -18,6 +18,23 @@
 <div class="jumbotron text-center">
   <p id="demo"></p>
 </div>
+<div id="result" class="jumbotron text-center"></div>
+
+
+<script>
+    function clickCounter() {
+        if (typeof (Storage) !== "undefined") {
+            if (localStorage.clickcount) {
+                localStorage.clickcount = Number(localStorage.clickcount) + 1;
+            } else {
+                localStorage.clickcount = 1;
+            }
+            document.getElementById("result").innerHTML = "You have been on this page " + localStorage.clickcount + " time(s).";
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+        }
+    }
+</script>
 
 <script>
     var x = setInterval(function () {
