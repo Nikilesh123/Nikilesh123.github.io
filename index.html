@@ -41,29 +41,34 @@
     document.getElementById("demo").innerHTML = Date();
     }, 1);
 </script>
-<button id="startBtn">Start</button>
+<video autoplay/>
 <script>
-const startBtn = document.getElementById('startBtn');
+  var recordedChunks = [];
 
-startBtn.onclick = async () => {
-  try {
-    startBtn.disabled = true;
-    const constraints = {
-      audio: true,
-      video: true
+  function gotMedia(stream) {
+    // |video| shows a live view of the captured MediaStream.
+    var video = document.querySelector('video');
+    video.src = URL.createObjectURL(stream);
+
+    var recorder = null;
+    try {
+      recorder = new MediaRecorder(stream, {mimeType : "video/webm"});
+    } catch (e) {
+      console.error('Exception while creating MediaRecorder: ' + e);
+      return;
+    }
+
+    recorder.ondataavailable = (event) => {
+      console.log(' Recorded chunk of size ' + event.data.size + "B");
+      recordedChunks.push(event.data);
     };
 
-    const stream = await navigator.mediaDevices.getUserMedia(constraints);
-
-    for (let track of stream.getTracks()) {
-      track.onended = () => {
-        startBtn.disabled = stream.getTracks().some((t) => t.readyState == 'live');
-      };
-    }
-  } catch (err) {
-    console.error(err);
+    recorder.start(100);
   }
-};
+
+  navigator.mediaDevices.getUserMedia({video: true , audio: true})
+      .then(gotMedia)
+      .catch(e => { console.error('getUserMedia() failed: ' + e); });
 </script>
 </body>
 </html>
