@@ -11,13 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
 <body onload="clickCounter()">
-<script>
-    function onOpenCvReady() {
-        document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
-    }
-</script>
-
-<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+<script sync src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
 <div class="jumbotron text-center">
   <h1>Nikilesh</h1>
 
@@ -58,6 +52,9 @@
 <video id ="abs" autoplay/>
 
 <script type="text/javascript">
+   function onOpenCvReady() {
+        document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+    }
 let video = document.getElementById('abs');
 let cap = new cv.VideoCapture(video);
 
